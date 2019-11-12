@@ -38,6 +38,9 @@ class ListNode:
             self.next.prev = self.prev
 
 
+print(ListNode)
+
+
 """Our doubly-linked list class. It holds references to
 the list's head and tail nodes."""
 
