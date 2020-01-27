@@ -18,13 +18,17 @@ class BinarySearchTree:
         if value < self.value:
             if not self.left:
                 self.left = BinarySearchTree(value)
+                # print(self.value)
             else:
                 self.left.insert(value)
+                # print(self.value)
         else:
             if not self.right:
-                self.right = BinarySearchTree(value)
+                self.right = BinarySearchTree(value) #
+                # print(self.value)
             else:
                 self.right.insert(value)
+                # print(self.value)
 
         #  >= go right
 
@@ -121,9 +125,10 @@ class BinarySearchTree:
         # make stack
         stack = Stack()
         # put the root in the stack
-        stack.push(none)
+        stack.push(node)
         # while stack is not empty
-        while queue.len() !=0:
+        # while queue.len() !=0:
+        while self.stack != None:
             # Pop the top item in the stack
             current = self.stack.pop()
             print(current.value)
@@ -154,6 +159,13 @@ class BinarySearchTree:
     def post_order_dft(self, node):
         pass
 
+
+# bst = BinarySearchTree(5)
+# bst.insert(2)
+# bst.insert(2)
+# bst.insert(3)
+# bst.insert(7)
+# bst.insert(6)
 
 '''
     return self.right.get_max() if self.right else self.value
