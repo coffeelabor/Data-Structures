@@ -12,11 +12,21 @@ class BinarySearchTree:
 
     # Insert the given value into the tree
     def insert(self, value):
+        # compare root node
+        # if lesser go to left child
+        # if greater or = go to right child
+        #  if no childe, on that side, insert
+        #  else try again starting from the child on appropriate 
         pass
 
     # Return True if the tree contains the value
     # False if it does not
     def contains(self, target):
+        # look at root, if root is it return 
+        # if value is less than node, go left and repeat
+        # if no left child, return none
+        #  if value is >= node, go right and repeat
+        #  if no right child, return none
         pass
 
     # Return the maximum value found in the tree
