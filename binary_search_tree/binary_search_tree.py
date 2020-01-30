@@ -13,11 +13,24 @@ class BinarySearchTree:
     # Insert the given value into the tree
     def insert(self, value):
         # compare root node
-        # if lesser go to left child
-        # if greater or = go to right child
+        if value < self.value:
+            # if lesser go to left child
+            if not self.left:
+                self.left = BinarySearchTree(value)
+            else:
+                # if something is already there, recurse
+                self.left.insert(value)
+        else: #value is > =Node
+            # if greater or = go to right child
+            if not self.right:
+                self.right = BinarySearchTree(value)
+            else:
+                # if something is already there recurse
+                self.right.insert(value)
+
         #  if no childe, on that side, insert
         #  else try again starting from the child on appropriate 
-        pass
+    
 
     # Return True if the tree contains the value
     # False if it does not
@@ -27,16 +40,50 @@ class BinarySearchTree:
         # if no left child, return none
         #  if value is >= node, go right and repeat
         #  if no right child, return none
-        pass
+        if self.value == target:            
+            return True
+        if target < self.value:
+            if not self.left:
+                return False
+            else:
+                return self.left.contains(target)
+        else:
+            if not self.right:
+                return False
+            else:
+                return self.right.contains(target)
 
     # Return the maximum value found in the tree
     def get_max(self):
-        pass
+        # RECURSIVE
+        # if not self.right:
+        #     return self.value
+        # else:
+        #     return self.right.get_max()
+
+        # ITERATIVE
+        max_value = self.value
+        # create a reference to the current node and update it
+        # as we traverse the tree
+        current = self
+        while current:
+            if current.value > max_value:
+                max_value = current.value
+            current = current.right
+        return max_value
+            # current.value += 1
+            # print(self.value)
+
 
     # Call the function `cb` on the value of each node
     # You may use a recursive or iterative approach
     def for_each(self, cb):
-        pass
+        cb(self.value)
+
+        if self.left:
+            self.left.for_each(cb)
+        if self.right:
+            self.right.for_each(cb)
 
     # DAY 2 Project -----------------------
 
@@ -49,11 +96,20 @@ class BinarySearchTree:
     # in an iterative breadth first traversal
     def bft_print(self, node):
         pass
+        
 
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal
     def dft_print(self, node):
         pass
+        # Iterative:
+        # make a stack
+        # add root to stack
+        # pop num and save in temp
+        # Do the thing!!
+        # if temp.left add to stack
+        # if temp.right add to stack
+        # 
 
     # STRETCH Goals -------------------------
     # Note: Research may be required
@@ -65,3 +121,31 @@ class BinarySearchTree:
     # Print Post-order recursive DFT
     def post_order_dft(self, node):
         pass
+
+
+'''
+from geeks for geeks
+The left subtree of a node contains only nodes with keys lesser than the node’s key.
+The right subtree of a node contains only nodes with keys greater than the node’s key.
+The left and right subtree each must also be a binary search tree.
+There must be no duplicate nodes.
+'''
+
+'''
+  def insert(self, value):
+    # call the BinarySearchTree and pass in the value. set it to node.
+    
+    # check if the insert value is less than the current value, we go left
+      # and check if there is no left node, then left node becomes the leaf node
+      # otherwise we recursively call insert() again on the left leaf node
+    # else that means the inserted value >= current value, we go right 
+      # check if right node is none, then right node becomes the leaf node
+      # otherwise we recursively call insert() again on the left leaf node
+'''
+
+
+'''
+# base case
+        if value == None or value == key:
+            return None
+'''
