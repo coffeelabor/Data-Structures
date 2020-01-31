@@ -36,12 +36,12 @@ class BinarySearchTree:
     # False if it does not
     def contains(self, target):
         # look at root, if root is it return 
-        # if value is less than node, go left and repeat
         # if no left child, return none
         #  if value is >= node, go right and repeat
         #  if no right child, return none
         if self.value == target:            
             return True
+        # if value is less than node, go left and repeat
         if target < self.value:
             if not self.left:
                 return False
@@ -90,26 +90,55 @@ class BinarySearchTree:
     # Print all the values in order from low to high
     # Hint:  Use a recursive, depth first traversal
     def in_order_print(self, node):
-        pass
+        # if node is None:
+        print(node.value)
+        if self.left:
+            self.left.in_order_print(node)
+        if self.right:
+            self.right.in_order_print(node)
 
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
     def bft_print(self, node):
-        pass
+        # Need a queue
+        queue = Queue()
+        # add to queue
+        queue.enqueue(node)
+        # while the queue is not 0
+        while queue.len() > 0:
+            # remove the node from the head
+            node = queue.dequeue()
+            print(node.value)
+            # look left
+            if node.left is not None:
+                # add the node
+                queue.enqueue(node.left)
+            if node.right is not None:
+                # add the node
+                queue.enqueue(node.right)
+
         
 
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal
     def dft_print(self, node):
-        pass
         # Iterative:
         # make a stack
+        stack = Stack()
         # add root to stack
+        # print('stack'. stack)
         # pop num and save in temp
+        stack.push(node)
+        while stack.len() > 0:
         # Do the thing!!
+            node = stack.pop()
         # if temp.left add to stack
+            print(node.value)
+            if node.left is not None:
+                stack.push(node.left)
         # if temp.right add to stack
-        # 
+            if node.right is not None:
+                stack.push(node.right)
 
     # STRETCH Goals -------------------------
     # Note: Research may be required
@@ -148,4 +177,27 @@ There must be no duplicate nodes.
 # base case
         if value == None or value == key:
             return None
+'''
+
+'''
+while queue.len() != 0:
+            current = queue.dequeue()
+
+            if current.left:
+                queue.enqueue(current.left)
+            
+            if current.right:
+                queue.enqueue(current.right)
+'''
+
+'''
+while self.stack != None:
+            current = self.stack.pop()
+        # Do the thing!!
+        # if temp.left add to stack
+            if node.left:
+                self.stack.push(node.left())
+        # if temp.right add to stack
+            if node.right:
+                self.stack.push(node.right())
 '''
